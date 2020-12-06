@@ -28,3 +28,21 @@ With command `python3 -m virtualenv nvimpy3`, `python3 -m virtualenv black`. The
 ```
 mklink C:\Users\karol\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 C:\Dev\dotfiles\windows\profile.ps1
 ```
+
+## MacOSX
+
+### Neovim
+
+1. Create symlink to `init.vim` with:
+
+```
+ln -s init.vim ~/Dev/dotfiles/macosx/init.vim
+```
+
+1. Create virtualenv and install in them packages.
+
+### tmux
+
+Create links in home directory to `.tmux` and to `.tmux.conf`.
+
+
