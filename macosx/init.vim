@@ -16,6 +16,8 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'zchee/deoplete-jedi'
+Plug 'davidhalter/jedi-vim'
+Plug 'dense-analysis/ale'
 " Git wrapper
 Plug 'tpope/vim-fugitive'
 " Directory sidebar tree view
@@ -39,6 +41,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'unblevable/quick-scope'       " Plug
+Plug 'tpope/vim-commentary'
+Plug 'pixelneo/vim-python-docstring'
 call plug#end()
 
 colors codedark
@@ -109,3 +113,6 @@ command! -bang ProjectFiles call fzf#vim#files('.', <bang>0)
  
 set clipboard+=unnamedplus
 let g:qs_max_chars=80
+
+" Set pydocstring format
+let g:python_style = 'rest'
