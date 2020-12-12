@@ -12,6 +12,8 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'zchee/deoplete-jedi'
+Plug 'davidhalter/jedi'
+Plug 'davidhalter/jedi-vim'
 " Git wrapper
 Plug 'tpope/vim-fugitive'
 " Directory sidebar tree view
@@ -35,6 +37,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'unblevable/quick-scope'       " Plug
+Plug 'dense-analysis/ale'
 call plug#end()
 
 colors codedark
@@ -107,3 +110,4 @@ command! -bang ProjectFiles call fzf#vim#files('.', <bang>0)
  
 set clipboard+=unnamedplus
 let g:qs_max_chars=80
+let mapleader=","
