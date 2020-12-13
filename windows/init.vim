@@ -34,10 +34,12 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdcommenter'
+"Plug 'scrooloose/nerdcommenter' " replaced with vim commentary
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'unblevable/quick-scope'       " Plug
 Plug 'dense-analysis/ale'
+Plug 'tpope/vim-commentary'
+Plug 'pixelneo/vim-python-docstring'
 call plug#end()
 
 colors codedark
@@ -111,3 +113,6 @@ command! -bang ProjectFiles call fzf#vim#files('.', <bang>0)
 set clipboard+=unnamedplus
 let g:qs_max_chars=80
 let mapleader=","
+
+" Set pydocstring format
+let g:python_style = 'rest'
