@@ -3,14 +3,15 @@ filetype off
 set t_Co=256
 
 call plug#begin('~/AppData/Local/nvim/plugged')
-" Python autocomplete
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+ " Python autocomplete
+ if has('nvim')
+   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+ else
+   Plug 'Shougo/deoplete.nvim'
+   Plug 'roxma/nvim-yarp'
+   Plug 'roxma/vim-hug-neovim-rpc'
+ endif
+
 Plug 'zchee/deoplete-jedi'
 Plug 'davidhalter/jedi'
 Plug 'davidhalter/jedi-vim'
@@ -116,3 +117,7 @@ let mapleader=","
 
 " Set pydocstring format
 let g:python_style = 'rest'
+" Disable jedi-vim
+let g:jedi#completions_enabled = 0
+
+" let g:deoplete#sources#jedi#show_docstring = 1
