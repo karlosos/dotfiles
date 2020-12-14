@@ -116,3 +116,6 @@ let g:qs_max_chars=80
 
 " Set pydocstring format
 let g:python_style = 'rest'
+
+" Disable jedi-vim
+let g:jedi#completions_enabled = 0
