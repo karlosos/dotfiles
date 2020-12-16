@@ -1,5 +1,9 @@
 Function CDDEV {Set-Location -Path C:\Dev}
 
+Function DOWN {
+    explorer.exe C:\Users\karol\Downloads
+}
+
 Function OPEN-EXPLORER {
     explorer.exe .
 }
