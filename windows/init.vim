@@ -15,6 +15,7 @@ call plug#begin('~/AppData/Local/nvim/plugged')
 Plug 'zchee/deoplete-jedi'
 Plug 'davidhalter/jedi'
 Plug 'davidhalter/jedi-vim'
+Plug 'Shougo/echodoc.vim'
 " Git wrapper
 Plug 'tpope/vim-fugitive'
 " Directory sidebar tree view
@@ -34,13 +35,14 @@ Plug 'psf/black'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 "Plug 'scrooloose/nerdcommenter' " replaced with vim commentary
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'unblevable/quick-scope'       " Plug
 Plug 'dense-analysis/ale'
 Plug 'tpope/vim-commentary'
 Plug 'pixelneo/vim-python-docstring'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 colors codedark
@@ -119,5 +121,14 @@ let mapleader=","
 let g:python_style = 'rest'
 " Disable jedi-vim
 let g:jedi#completions_enabled = 0
-
+autocmd FileType python setlocal completeopt-=preview
 " let g:deoplete#sources#jedi#show_docstring = 1
+let g:jedi#show_call_signatures = 0
+
+" echod doc
+" Or, you could use neovim's floating text feature.
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'floating'
+" To use a custom highlight for the float window,
+" change Pmenu to your highlight group
+highlight link EchoDocFloat Pmenu
