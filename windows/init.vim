@@ -3,46 +3,70 @@ filetype off
 set t_Co=256
 
 call plug#begin('~/AppData/Local/nvim/plugged')
- " Python autocomplete
- if has('nvim')
-   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
- else
-   Plug 'Shougo/deoplete.nvim'
-   Plug 'roxma/nvim-yarp'
-   Plug 'roxma/vim-hug-neovim-rpc'
- endif
+    "
+    " Python
+    "
 
-Plug 'zchee/deoplete-jedi'
-Plug 'davidhalter/jedi'
-Plug 'davidhalter/jedi-vim'
-Plug 'Shougo/echodoc.vim'
-" Git wrapper
-Plug 'tpope/vim-fugitive'
-" Directory sidebar tree view
-Plug 'scrooloose/nerdtree'
-" Json plugin
-Plug 'elzr/vim-json'
-" Text search your project directory
-Plug 'dyng/ctrlsf.vim'
-" Fuzzy file finder
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-" Root the project dir to folder w/ .git if applicable
-Plug 'airblade/vim-rooter'
-" Nice colorscheme based on Visual Studio dark
-Plug 'tomasiser/vim-code-dark'
-Plug 'psf/black'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'airblade/vim-gitgutter'
-" Plug 'jiangmiao/auto-pairs'
-"Plug 'scrooloose/nerdcommenter' " replaced with vim commentary
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-Plug 'unblevable/quick-scope'       " Plug
-Plug 'dense-analysis/ale'
-Plug 'tpope/vim-commentary'
-Plug 'pixelneo/vim-python-docstring'
-Plug 'tpope/vim-surround'
+    " Autocomplete 
+    if has('nvim')
+        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    else
+        Plug 'Shougo/deoplete.nvim'
+        Plug 'roxma/nvim-yarp'
+        Plug 'roxma/vim-hug-neovim-rpc'
+    endif
+
+    " Intellisense (LSP)
+    Plug 'zchee/deoplete-jedi'
+    Plug 'davidhalter/jedi'
+    Plug 'davidhalter/jedi-vim'
+    " Call signatures
+    Plug 'Shougo/echodoc.vim'
+
+    " Python formatter
+    Plug 'psf/black'
+
+    " Generate docstring for python function/class
+    Plug 'pixelneo/vim-python-docstring'
+
+    "
+    " Misc
+    "
+
+    " Git wrapper
+    Plug 'tpope/vim-fugitive'
+    " Directory sidebar tree view
+    Plug 'scrooloose/nerdtree'
+    " Json plugin
+    Plug 'elzr/vim-json'
+    " Text search your project directory
+    Plug 'dyng/ctrlsf.vim'
+    " Fuzzy file finder
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf.vim'
+    " Root the project dir to folder w/ .git if applicable
+    Plug 'airblade/vim-rooter'
+    " Nice colorscheme based on Visual Studio dark
+    Plug 'tomasiser/vim-code-dark'
+    " Status bar on the bottom
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    " Show git diff in the sign column
+    Plug 'airblade/vim-gitgutter'
+    " Automaticly add pairing parenteses
+    " Plug 'jiangmiao/auto-pairs'
+    " Multiple cursors with Ctrl-Down/Ctrl-Up
+    Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+    " Highlight unique characters in line for quick f F
+    Plug 'unblevable/quick-scope'
+    " Linters and formatters for many languages
+    Plug 'dense-analysis/ale'
+    " Comment lines
+    Plug 'tpope/vim-commentary'
+    " Surround words/selections with braces, quotes etc.
+    Plug 'tpope/vim-surround'
+    " Activity Watch watcher
+    Plug 'ActivityWatch/aw-watcher-vim'
 call plug#end()
 
 colors codedark
@@ -87,22 +111,24 @@ let g:black_virtualenv = 'C:\Users\karol\virtualenvs/black'
 
 let g:acp_enableAtStartup = 0
 
+" Deoplete
 let g:deoplete#enable_at_startup = 1
-" deoplete tab-complete
+" Deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
+
+" CTRL + o for nerd tree
+map <C-b> :NERDTreeToggle<CR>
+
+" FZF and RG config
 let g:fzf_action = {
       \ 'ctrl-s': 'split',
       \ 'ctrl-v': 'vsplit',
       \ 'ctrl-t': 'tabe'
       \ }
+
 nnoremap <c-p> :FZF<cr>
 nnoremap <c-f> :Rg<cr>
-" CTRL + o for nerd tree
-map <C-b> :NERDTreeToggle<CR>
-" CTRL + / for comment
-nmap <C-,>   <Plug>NERDCommenterToggle
-vmap <C-,>   <Plug>NERDCommenterToggle<CR>gv
 
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
@@ -113,22 +139,17 @@ command! -bang -nargs=* Rg
  
 command! -bang ProjectFiles call fzf#vim#files('.', <bang>0)
  
+" Clipboard
 set clipboard+=unnamedplus
 let g:qs_max_chars=80
+
+" Change leader to comma
 let mapleader=","
 
 " Set pydocstring format
 let g:python_style = 'rest'
-" Disable jedi-vim
+
+" Disable jedi-vim (because it's synchronous)
 let g:jedi#completions_enabled = 0
 autocmd FileType python setlocal completeopt-=preview
-" let g:deoplete#sources#jedi#show_docstring = 1
-let g:jedi#show_call_signatures = 0
-
-" echod doc
-" Or, you could use neovim's floating text feature.
-let g:echodoc#enable_at_startup = 1
-let g:echodoc#type = 'floating'
-" To use a custom highlight for the float window,
-" change Pmenu to your highlight group
-highlight link EchoDocFloat Pmenu
+let g:jedi#show_call_signatures = 2
