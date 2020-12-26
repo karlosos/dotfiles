@@ -6,10 +6,11 @@ Personal configuration files
 
 ### Configuring **neovim**
 
-1. Create symlink to `init.vim` with command using `cmd.exe`:
+1. Create symlink to `init.vim` and to `plug-config` with following commands using `cmd.exe`:
 
 ```
 mklink C:\Users\karol\AppData\Local\nvim\init.vim C:\Dev\dotfiles\windows\init.vim
+mklink /d C:\Users\karol\AppData\local\nvim\plug-config C:\Dev\dotfiles\windows\plug-config\
 ```
 
 > NOTE: `mklink` won't work in powershell
@@ -28,6 +29,10 @@ With command `python3 -m virtualenv nvimpy3`, `python3 -m virtualenv black`. The
 ```
 mklink C:\Users\karol\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 C:\Dev\dotfiles\windows\profile.ps1
 ```
+
+## Othe tweaks
+
+1. Disable snap assist in Windows 10.
 
 ## MacOSX
 

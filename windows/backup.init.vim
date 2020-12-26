@@ -5,10 +5,7 @@ set t_Co=256
 call plug#begin('~/AppData/Local/nvim/plugged')
     "
     " Python
-
-    " CoC - autocomplete 
-    " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    " install coc-pyright
+    "
 
     " Autocomplete 
     if has('nvim')
@@ -156,6 +153,3 @@ let g:python_style = 'rest'
 let g:jedi#completions_enabled = 0
 autocmd FileType python setlocal completeopt-=preview
 let g:jedi#show_call_signatures = 2
-
-" Load coc config
-" source C:\Users\karol\AppData\Local\nvim\plug-config\coc.vim
