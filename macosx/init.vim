@@ -7,18 +7,20 @@ let g:black_virtualenv = '~/.virtualenv/black'
 
 
 call plug#begin('~/.config/nvim/pluged')
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Python autocomplete
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'zchee/deoplete-jedi'
-Plug 'davidhalter/jedi-vim'
-Plug 'dense-analysis/ale'
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+" Plug 'zchee/deoplete-jedi'
+" Plug 'davidhalter/jedi-vim'
+" Plug 'dense-analysis/ale'
 " Git wrapper
+Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 Plug 'tpope/vim-fugitive'
 " Directory sidebar tree view
 Plug 'scrooloose/nerdtree'
@@ -33,7 +35,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
 " Nice colorscheme based on Visual Studio dark
 Plug 'tomasiser/vim-code-dark'
-Plug 'psf/black'
+" Plug 'psf/black'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
@@ -43,11 +45,14 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'unblevable/quick-scope'       " Plug
 Plug 'tpope/vim-commentary'
 Plug 'pixelneo/vim-python-docstring'
+Plug 'ActivityWatch/aw-watcher-vim'
+Plug 'psliwka/vim-smoothie'
 call plug#end()
 
 colors codedark
 let g:airline_theme = 'codedark'
 
+let mapleader=","
 set shiftwidth=4
 set tabstop=4
 set expandtab
@@ -83,9 +88,9 @@ filetype plugin indent on
 
 " let g:python2_host_prog = 'C:\Users\karol\virtualenvs\nvimpy2\Scripts\python.exe'
 
-let g:acp_enableAtStartup = 0
+" let g:acp_enableAtStartup = 0
 
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
@@ -97,7 +102,7 @@ let g:fzf_action = {
 nnoremap <c-p> :FZF<cr>
 nnoremap <c-f> :Rg<cr>
 " CTRL + o for nerd tree<
-map <C-u> :NERDTreeToggle<CR>
+map <leader>t :NERDTreeToggle<CR>
 " CTRL + / for comment
 nmap <C-,>   <Plug>NERDCommenterToggle
 vmap <C-,>   <Plug>NERDCommenterToggle<CR>gv
@@ -117,5 +122,8 @@ let g:qs_max_chars=80
 " Set pydocstring format
 let g:python_style = 'rest'
 
-" Disable jedi-vim
-let g:jedi#completions_enabled = 0
+" " Disable jedi-vim
+" let g:jedi#completions_enabled = 0
+" g:jedi#show_call_signatures_delay = 0
+
+source $HOME/.config/nvim/plug-config/coc.vim
