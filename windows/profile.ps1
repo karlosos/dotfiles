@@ -21,3 +21,4 @@ Set-Alias -Name open -Value explorer.exe
 Set-Alias -Name o -Value explorer.exe
 
 # Import-Module posh-git
+Invoke-Expression (&starship init powershell)

@@ -30,7 +30,13 @@ With command `python3 -m virtualenv nvimpy3`, `python3 -m virtualenv black`. The
 mklink C:\Users\karol\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 C:\Dev\dotfiles\windows\profile.ps1
 ```
 
-## Othe tweaks
+2. Install [starship](https://github.com/starship/starship) with `scoop install starship`.
+
+### Configuring **windows terminal**
+
+1. Copy contents of `windows-terminal-settings.json` to windows terminal settings.
+
+## Other tweaks
 
 1. Disable snap assist in Windows 10.
 
