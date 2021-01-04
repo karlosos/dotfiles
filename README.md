@@ -2,6 +2,8 @@
 
 Personal configuration files
 
+![docs/screen.png](docs/screen.png)
+
 ## Windows
 
 ### Configuring **neovim**
