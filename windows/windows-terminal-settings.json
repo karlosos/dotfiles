@@ -27,7 +27,7 @@
     "defaults": {
       "startingDirectory":  ".",
 	  "padding": "5, 5, -10, 0",
-	  "fontFace": "FiraMono Nerd Font",
+	  "fontFace": "CaskaydiaCove NF",
 	  "colorScheme": "Arthur",
 	  "tabColor": "#1c1c1c"
       // Put settings here that you want to apply to all profiles.

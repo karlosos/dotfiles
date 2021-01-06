@@ -22,3 +22,6 @@ Set-Alias -Name o -Value explorer.exe
 
 # Import-Module posh-git
 Invoke-Expression (&starship init powershell)
+
+# Disable env prompt
+$ENV:VIRTUAL_ENV_DISABLE_PROMPT=1
