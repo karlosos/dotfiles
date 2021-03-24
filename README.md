@@ -58,4 +58,13 @@ ln -s init.vim ~/Dev/dotfiles/macosx/init.vim
 
 Create links in home directory to `.tmux` and to `.tmux.conf`.
 
+## Linux
+
+Create file with aliases `~/.bash_aliases`. Load it in `~/.bashrc`.
+
+```
+if [ -f ~/.bash_aliases ]; then
+	. ~/.bash_aliases
+fi
+```
 
